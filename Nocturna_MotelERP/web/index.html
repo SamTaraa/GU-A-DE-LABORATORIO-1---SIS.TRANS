@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nocturna · MotelERP</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%2314110e' width='32' height='32'/><text x='16' y='22' text-anchor='middle' fill='%23c4a574' font-size='16' font-family='Georgia'>N</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark">N</span>
+      <span>
+        <strong>Nocturna</strong>
+        <small>MotelERP</small>
+      </span>
+    </a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Abrir menú">Menú</button>
+    <nav id="mainNav">
+      <a href="#servicios">Servicios</a>
+      <a href="#habitaciones">Habitaciones</a>
+      <a href="#productos">Minibar</a>
+      <a href="#acceso">Acceso</a>
+      <a href="#erp">ERP</a>
+    </nav>
+    <div class="session-chip" id="sessionChip">Sin sesión</div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Motel · ERP transaccional</p>
+        <h1>La noche se factura. El stock no se inventa.</h1>
+        <p>
+          Nocturna opera habitaciones, jacuzzi, minibar y lencería con MotelERP:
+          roles, inventario y facturación con IVA 19% en una sola demo académica.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#habitaciones">Ver habitaciones</a>
+          <a class="button ghost" href="#acceso">Entrar al ERP</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <p class="card-kicker">Tablero en vivo</p>
+        <dl>
+          <div><dt>Ítems activos</dt><dd id="heroProducts">0</dd></div>
+          <div><dt>Unidades</dt><dd id="heroUnits">0</dd></div>
+          <div><dt>Alertas</dt><dd id="heroAlerts">0</dd></div>
+          <div><dt>Última factura</dt><dd id="heroInvoice">$0</dd></div>
+        </dl>
+        <p class="hint" id="heroHint">Inicie sesión para mover inventario y emitir cargos.</p>
+      </aside>
+    </section>
+
+    <section id="servicios" class="section">
+      <div class="section-head">
+        <p class="eyebrow">Qué vende el negocio</p>
+        <h2>Servicios de Nocturna</h2>
+      </div>
+      <div class="service-grid">
+        <article class="service">
+          <span>01</span>
+          <h3>Turnos de habitación</h3>
+          <p>Estándar, Suite Jacuzzi y VIP Terraza. El cargo de hospedaje entra a la misma factura.</p>
+        </article>
+        <article class="service">
+          <span>02</span>
+          <h3>Minibar</h3>
+          <p>Cerveza, vino y snacks. Cada unidad descuenta stock real de bodega.</p>
+        </article>
+        <article class="service">
+          <span>03</span>
+          <h3>Aseo y lencería</h3>
+          <p>Kits, toallas y sábanas con umbral mínimo. Bodega reponen; recepción no.</p>
+        </article>
+        <article class="service">
+          <span>04</span>
+          <h3>Checkout</h3>
+          <p>Subtotal + IVA 19%. Administrador y Recepcionista facturan; Bodega no.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="habitaciones" class="section rooms">
+      <div class="section-head">
+        <p class="eyebrow">Catálogo</p>
+        <h2>Habitaciones</h2>
+      </div>
+      <div class="room-grid">
+        <article class="room">
+          <img src="img/room-estandar.png" alt="Habitación estándar Nocturna" width="800" height="600">
+          <div class="room-body">
+            <h3>Estándar</h3>
+            <p>Cama queen, TV y minibar básico. Rotación alta.</p>
+            <div class="room-foot">
+              <strong>$85.000 / turno</strong>
+              <button type="button" class="ghost dark" data-add="7">Cargar a factura</button>
+            </div>
+          </div>
+        </article>
+        <article class="room featured">
+          <img src="img/room-suite.png" alt="Suite jacuzzi Nocturna" width="800" height="600">
+          <div class="room-body">
+            <p class="tag">Más solicitada</p>
+            <h3>Suite Jacuzzi</h3>
+            <p>Jacuzzi, luz ambiente y minibar premium. Consumos al checkout.</p>
+            <div class="room-foot">
+              <strong>$145.000 / turno</strong>
+              <button type="button" class="ghost dark" data-add="8">Cargar a factura</button>
+            </div>
+          </div>
+        </article>
+        <article class="room">
+          <img src="img/room-vip.png" alt="VIP terraza Nocturna" width="800" height="600">
+          <div class="room-body">
+            <h3>VIP Terraza</h3>
+            <p>Terraza privada, barra y lencería premium.</p>
+            <div class="room-foot">
+              <strong>$190.000 / turno</strong>
+              <button type="button" class="ghost dark" data-add="9">Cargar a factura</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="productos" class="section">
+      <div class="section-head">
+        <p class="eyebrow">Tienda interna</p>
+        <h2>Minibar, aseo y lencería</h2>
+      </div>
+      <div id="productCards" class="product-grid"></div>
+    </section>
+
+    <section id="acceso" class="section access">
+      <div>
+        <p class="eyebrow">Control de acceso</p>
+        <h2>Tres roles, tres llaves</h2>
+        <p class="lead">
+          Demo local. En producción estos usuarios vivirían en SQL Server
+          (<code>Usuario</code>, <code>Rol</code>, hash de contraseña).
+        </p>
+        <ul class="role-list">
+          <li><strong>Administrador</strong> — factura y repone.</li>
+          <li><strong>Recepcionista</strong> — factura, no repone.</li>
+          <li><strong>Bodega</strong> — repone, no factura.</li>
+        </ul>
+        <div class="accounts">
+          <button type="button" class="account" data-email="admin@motelerp.local" data-pass="demo123">Laura · admin@motelerp.local / demo123</button>
+          <button type="button" class="account" data-email="recepcion@motelerp.local" data-pass="demo123">Carlos · recepcion@motelerp.local / demo123</button>
+          <button type="button" class="account" data-email="bodega@motelerp.local" data-pass="demo123">Marta · bodega@motelerp.local / demo123</button>
+        </div>
+      </div>
+      <form id="loginForm" class="panel">
+        <h3>Ingresar al ERP</h3>
+        <label>Correo
+          <input id="email" type="email" autocomplete="username" value="admin@motelerp.local" required>
+        </label>
+        <label>Contraseña
+          <input id="password" type="password" autocomplete="current-password" value="demo123" required>
+        </label>
+        <div class="row-actions">
+          <button type="submit">Validar acceso</button>
+          <button type="button" class="ghost dark" id="logoutBtn">Cerrar sesión</button>
+        </div>
+        <p id="loginMsg" class="message"></p>
+      </form>
+    </section>
+
+    <section id="erp" class="section erp">
+      <div class="section-head">
+        <p class="eyebrow">Versión preliminar</p>
+        <h2>Inventario y facturación</h2>
+      </div>
+      <div class="erp-wrap" id="erpWrap">
+        <div class="erp-lock" id="erpLock">
+          <p>El ERP está bloqueado.</p>
+          <a class="button" href="#acceso">Iniciar sesión</a>
+        </div>
+        <div class="stats">
+          <div><span id="totalProducts">0</span><small>Ítems</small></div>
+          <div><span id="stockUnits">0</span><small>Unidades</small></div>
+          <div><span id="criticalCount">0</span><small>En reposición</small></div>
+          <div><span id="invoiceTotal">$0</span><small>Factura abierta</small></div>
+        </div>
+        <div class="workspace">
+          <div class="stack">
+            <form id="invoiceForm" class="panel">
+              <h3>Cargo</h3>
+              <label>Cliente / habitación
+                <input id="cliente" type="text" value="Habitación 204">
+              </label>
+              <label>Producto o servicio
+                <select id="productSelect"></select>
+              </label>
+              <label>Cantidad
+                <input id="quantity" type="number" min="1" value="1">
+              </label>
+              <div class="row-actions">
+                <button type="submit">Agregar a factura</button>
+                <button type="button" class="ghost dark" id="restockBtn">Ingresar +5</button>
+                <button type="button" class="ghost dark" id="newInvoiceBtn">Nueva factura</button>
+              </div>
+              <p id="movementMsg" class="message"></p>
+            </form>
+            <div class="panel invoice-preview">
+              <h3>Factura</h3>
+              <p id="invoiceMeta" class="hint">Sin cargos.</p>
+              <ul id="invoiceLines"></ul>
+              <div class="totals">
+                <div><span>Subtotal</span><strong id="invSub">$0</strong></div>
+                <div><span>IVA 19%</span><strong id="invIva">$0</strong></div>
+                <div class="grand"><span>Total</span><strong id="invGrand">$0</strong></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel table-panel">
+            <h3>Inventario</h3>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Ítem</th>
+                    <th>Categoría</th>
+                    <th>Stock</th>
+                    <th>Mín.</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryRows"></tbody>
+              </table>
+            </div>
+            <h3 class="mt">Movimientos</h3>
+            <ul id="movementLog" class="log"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>Nocturna · MotelERP</strong>
+      <p>Proyecto académico — Sistemas Transaccionales. Clases <code>Usuario</code>, <code>Producto</code>, <code>Factura</code> e <code>Inventario</code>.</p>
+    </div>
+    <p>Demo local. Sin conexión a SQL Server.</p>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
